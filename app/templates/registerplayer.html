@@ -1,0 +1,137 @@
+{% extends "base.html"%}
+{%block content%}
+
+<input type="hidden" id="account-name" value="{{ message }}">
+<script>
+    window.onload = myFunction;
+    function myFunction() {
+        let user = document.getElementById("account-name").value;
+        if (user == null || user == "") {
+            document.getElementById("base-login").style.display = "block";
+            document.getElementById("base-logout").style.display = "none";
+        } else {
+            document.getElementById("base-login").style.display = "none";
+            document.getElementById("base-logout").style.display = "block";
+        }
+    }
+</script>
+<!-- Player Form -->
+<div class="form-section">
+    <h3>Player Registration</h3>
+    <div class="player-form">
+        <form name="contactForm" id="registeredit-form" action="/register" method="post">
+            <label for="FName">First Name<span class="redstar">*</span></label>
+            <div>
+                <input type="text" id="FName" name="fname" placeholder="First Name">
+                <div class="error" id="FnameErr"></div>
+            </div>
+
+            <label for="LName">Last Name<span class="redstar">*</span></label>
+            <div>
+                <input type="text" id="LName" name="lname" placeholder="Last Name">
+                <div class="error" id="LnameErr"></div>
+            </div>
+
+            <label for="DOB">Date of Birth<span class="redstar">*</span></label>
+            <div>
+                <input type="date" id="DOB" name="dob">
+                <div class="error" id="DOBErr"></div>
+            </div>
+
+
+            <label for="weight">Weight<span class="redstar">*</span></label>
+            <div>
+                <input type="number" name="weight" id="weight" name="weight" placeholder="weight in kgs">
+                <div class="error" id="weightErr"></div>
+            </div>
+
+            <label for="team">Team<span class="redstar">*</span></label>
+            <div>
+                <select id="team" name="team">
+                    <option value="Select">Select team</option>
+                    <option value="Manchester United">Manchester United</option>
+                    <option value="Manchester City">Manchester City</option>
+                    <option value="Liverpool">Liverpool</option>
+                    <option value="Tottenham Hotspur">Tottenham Hotspur</option>
+                    <option value="WestHam United">WestHam United</option>
+                    <option value="Arsenal">Arsenal</option>
+                    <option value="Chelsea">Chelsea</option>
+                    <option value="Crystal Palace">Crystal Palace</option>
+                    <option value="Leeds United">Leeds United</option>
+                    <option value="Everton">Everton</option>
+                    <option value="Brighton">Brighton</option>
+                    <option value="Newcastle United">Newcastle United</option>
+                </select>
+                <div class="error" id="teamErr"></div>
+            </div>
+
+            <label for="country">Country of Origin<span class="redstar">*</span></label>
+            <div>
+
+                <select id="country" name="country">
+                    <option value="Select">Select country</option>
+                    <option value="Portugal">Portugal</option>
+                    <option value="Spain">Spain</option>
+                    <option value="UK">United Kingdom</option>
+                    <option value="South Korea">South Korea</option>
+                    <option value="Brazil">Brazil</option>
+                    <option value="Uruguay">Uruguay</option>
+                    <option value="Netherlands">Netherlands</option>
+                    <option value="USA">United States</option>
+                    <option value="India">India</option>
+                    <option value="Colombia">Colombia</option>
+                    <option value="Argentina">Argentina</option>
+                    <option value="Armenia">Armenia</option>
+                </select>
+                <div class="error" id="countryErr"></div>
+            </div>
+
+
+            <label for="Position">Position<span class="redstar">*</span></label>
+            <div>
+
+                <select id="Position" name="position" required>
+                    <option value="Select">Select playing position</option>
+                    <option value="Striker">Striker</option>
+                    <option value="Forward">Forward</option>
+                    <option value="Goal Keeper">Goal Keeper</option>
+                    <option value="Center Back">Center Back</option>
+                    <option value="Right Back">Right Back</option>
+                    <option value="Left Back">Left Back</option>
+                    <option value="Right Winger">Right Winger</option>
+                    <option value="Left Winger">Left Winger</option>
+                    <option value="Central Midfielder">Central Midfielder</option>
+                </select>
+                <div class="error" id="positionErr"></div>
+            </div>
+
+            <label for="matches">Matches Played<span class="redstar">*</span></label>
+            <div>
+                <input type="number" id="matches" name="matches">
+                <div class="error" id="matchErr"></div>
+            </div>
+
+            <label for="goals">Goals Scored<span class="redstar">*</span></label>
+            <div>
+                <input type="number" id="goals" name="goals">
+                <div class="error" id="goalErr"></div>
+            </div>
+
+        </form>
+
+    </div>
+</div>
+
+<!-- Buttons Container -->
+<div class="buttons-container">
+    <div class="buttons">
+        <a href="premierleague.html" class="btn">Back</a>
+    </div>
+    <div class="buttons">
+        <!-- <input type="submit" value="submit" class="btn" > -->
+        <button type="button" class="btn form-submit">Submit</button>
+    </div>
+</div>
+<script src="../static/javascript/playerDB.js"></script>
+
+{%endblock%}

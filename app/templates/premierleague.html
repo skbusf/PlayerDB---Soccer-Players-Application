@@ -1,0 +1,137 @@
+{% extends "base.html"%}
+{%block content%}
+
+<input type="hidden" id="account-name" value="{{ message }}">
+<script>
+    window.onload = myFunction;
+    function myFunction() {
+        let user = document.getElementById("account-name").value;
+        if (user == null || user == "") {
+            document.getElementById("base-login").style.display = "block";
+            document.getElementById("base-logout").style.display = "none";
+        } else {
+            document.getElementById("base-login").style.display = "none";
+            document.getElementById("base-logout").style.display = "block";
+        }
+    }
+</script>
+<div class="premierleague-table">
+    <!-- Buttons Container -->
+    <div class="buttons-container">
+        <div class="buttons-pl">
+            <a href="/registerplayer" class="btn">Register Player</a>
+        </div>
+        <div class="buttons-pl">
+            <a href="/editplayer" class="btn">Edit Player</a>
+        </div>
+    </div>
+
+    <!-- Players Table -->
+    <h1 style="text-align: center;">Premier League Team of the Year 2022</h1>
+    <div class="players-table">
+        <table>
+            <thead>
+                <tr>
+                    <th>S.No</td>
+                    <th>Name</td>
+                    <th>Team</td>
+                    <th>Position</td>
+                </tr>
+            </thead>
+            <tbody>
+                {% for player in players %}
+                <tr>
+                    <td>{{ player.id }}</td>
+                    <td><a href=""><img src="../static/iconsandimages/pictures/{{player.team.lower()}}.png"
+                                alt="{{player.team.lower()}}">{{ player.fname + " " + player.lname }}</td>
+                    <td>{{ player.team }}</td>
+                    <td>{{ player.position }}</td>
+                </tr>
+                {% endfor %}
+                <!-- <tr>
+                    <td>1</td>
+                    <td><a href=""><img src="../static/iconsandimages/pictures/manchester united.png" alt="manchesterunited">
+                            Cristiano
+                            Ronaldo</a></td>
+                    <td>Manchester United</td>
+                    <td>Forward</td>
+                </tr>
+                <tr>
+                    <td>2</td>
+                    <td><a href=""><img src="../static/iconsandimages/pictures/tottenham hotspur.png" alt="tottenhamhotspur">Harry
+                            Kane</a></td>
+                    <td>Tottenham Hotspur</td>
+                    <td>Forward</td>
+                </tr>
+                <tr>
+                    <td>3</td>
+                    <td><a href=""><img src="../static/iconsandimages/pictures/tottenham hotspur.png" alt="tottenhamhotspur">Son
+                            Heung
+                            Min</a>
+                    </td>
+                    <td>Tottenham Hotspur</td>
+                    <td>Forward</td>
+                </tr>
+                <tr>
+                    <td>4</td>
+                    <td><a href=""><img src="../static/iconsandimages/pictures/manchester city.png" alt="manchestercity">Kevin De
+                            Bruyne</a></td>
+                    <td>Manchester City</td>
+                    <td>Winger</td>
+                </tr>
+                <tr>
+                    <td>5</td>
+                    <td><a href=""><img src="../static/iconsandimages/pictures/manchester city.png" alt="manchestercity">Erling
+                            Haaland</a></td>
+                    <td>Manchester City</td>
+                    <td>Striker</td>
+                </tr>
+                <tr>
+                    <td>6</td>
+                    <td><a href=""><img src="../static/iconsandimages/pictures/liverpool.png" alt="liverpool">Darwin
+                            Núñez</a></td>
+                    <td>Liverpool</td>
+                    <td>Striker</td>
+                </tr>
+                <tr>
+                    <td>7</td>
+                    <td><a href=""><img src="../static/iconsandimages/pictures/liverpool.png" alt="liverpool">Virgil Van
+                            Dijk</a></td>
+                    <td>Liverpool</td>
+                    <td>Center Back</td>
+                </tr>
+                <tr>
+                    <td>8</td>
+                    <td><a href=""><img src="../static/iconsandimages/pictures/liverpool.png" alt="liverpool">Trent
+                            Alexander Arnold
+                        </a></td>
+                    <td>Liverpool</td>
+                    <td>Right Back</td>
+                </tr>
+                <tr>
+                    <td>9</td>
+                    <td><a href=""><img src="../static/iconsandimages/pictures/liverpool.png" alt="liverpool">Thiago
+                            Alcântara</a></td>
+                    <td>Liverpool</td>
+                    <td>Midfielder</td>
+                </tr>
+                <tr>
+                    <td>10</td>
+                    <td><a href=""><img src="../static/iconsandimages/pictures/chelsea.png" alt="chelsea">Thiago Silva</a>
+                    </td>
+                    <td>Chelsea</td>
+                    <td>Center Back</td>
+                </tr>
+                <tr>
+                    <td>11</td>
+                    <td><a href=""><img src="../static/iconsandimages/pictures/liverpool.png" alt="liverpool">Alison
+                            Becker</a></td>
+                    <td>Liverpool</td>
+                    <td>Goal Keeper</td>
+                </tr> -->
+            </tbody>
+        </table>
+    </div>
+</div>
+
+{%endblock%}
